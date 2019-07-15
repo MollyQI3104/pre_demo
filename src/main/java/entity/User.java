@@ -1,12 +1,13 @@
 package entity;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Objects;
 
 @Entity
-//@Table(name = "user", schema = "tododb", catalog = "")
-@Table(name = "user", schema = "tododb")
-public class UserEntity {
+public class User {
     private int id;
     private String email;
     private String password;
@@ -67,12 +68,12 @@ public class UserEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UserEntity that = (UserEntity) o;
-        return id == that.id &&
-                Objects.equals(email, that.email) &&
-                Objects.equals(password, that.password) &&
-                Objects.equals(role, that.role) &&
-                Objects.equals(username, that.username);
+        User user = (User) o;
+        return id == user.id &&
+                Objects.equals(email, user.email) &&
+                Objects.equals(password, user.password) &&
+                Objects.equals(role, user.role) &&
+                Objects.equals(username, user.username);
     }
 
     @Override

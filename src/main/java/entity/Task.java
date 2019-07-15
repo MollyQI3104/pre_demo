@@ -1,14 +1,15 @@
 package entity;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
-//@Table(name = "task", schema = "tododb", catalog = "")
-@Table(name = "task", schema = "tododb")
-public class TaskEntity {
+public class Task {
     private int id;
     private String category;
     private String content;
@@ -113,16 +114,16 @@ public class TaskEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        TaskEntity that = (TaskEntity) o;
-        return id == that.id &&
-                Objects.equals(category, that.category) &&
-                Objects.equals(content, that.content) &&
-                Objects.equals(createDate, that.createDate) &&
-                Objects.equals(description, that.description) &&
-                Objects.equals(status, that.status) &&
-                Objects.equals(taskDate, that.taskDate) &&
-                Objects.equals(taskName, that.taskName) &&
-                Objects.equals(userId, that.userId);
+        Task task = (Task) o;
+        return id == task.id &&
+                Objects.equals(category, task.category) &&
+                Objects.equals(content, task.content) &&
+                Objects.equals(createDate, task.createDate) &&
+                Objects.equals(description, task.description) &&
+                Objects.equals(status, task.status) &&
+                Objects.equals(taskDate, task.taskDate) &&
+                Objects.equals(taskName, task.taskName) &&
+                Objects.equals(userId, task.userId);
     }
 
     @Override
