@@ -1,30 +1,37 @@
-package entity;
+package com.example.demo;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.Objects;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import org.springframework.format.annotation.DateTimeFormat;
+
 
 @Entity
 public class Task {
-    private int id;
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Integer id;
+
     private String content;
-    private Timestamp createDate;
+    private LocalDateTime createDate;
     private String status;
-    private Date taskDate;
+
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private LocalDate taskDate;
+
     private String taskName;
     private Integer userId;
 
     @Id
     @Column(name = "id", nullable = false)
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -40,11 +47,11 @@ public class Task {
 
     @Basic
     @Column(name = "create_date", nullable = true)
-    public Timestamp getCreateDate() {
+    public LocalDateTime getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(Timestamp createDate) {
+    public void setCreateDate(LocalDateTime createDate) {
         this.createDate = createDate;
     }
 
@@ -60,11 +67,11 @@ public class Task {
 
     @Basic
     @Column(name = "task_date", nullable = false)
-    public Date getTaskDate() {
+    public LocalDate getTaskDate() {
         return taskDate;
     }
 
-    public void setTaskDate(Date taskDate) {
+    public void setTaskDate(LocalDate taskDate) {
         this.taskDate = taskDate;
     }
 
