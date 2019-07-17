@@ -5,6 +5,7 @@ create table task
     primary key,
   
   content     varchar(255) null,
+  title     varchar(255) null,
   create_date datetime     null,
   status      varchar(255) null,
   task_date   date         not null,

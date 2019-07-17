@@ -15,6 +15,7 @@ public class Task {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
 
+    private String title;
     private String content;
     private LocalDateTime createDate;
     private String status;
@@ -26,7 +27,7 @@ public class Task {
     private Integer userId;
 
     @Id
-    @Column(name = "id", nullable = false)
+//    @Column(name = "id", nullable = false)
     public Integer getId() {
         return id;
     }
@@ -36,7 +37,7 @@ public class Task {
     }
 
     @Basic
-    @Column(name = "content", nullable = true, length = 255)
+//    @Column(name = "content", nullable = true, length = 255)
     public String getContent() {
         return content;
     }
@@ -46,7 +47,17 @@ public class Task {
     }
 
     @Basic
-    @Column(name = "create_date", nullable = true)
+//    @Column(name = "title", nullable = true, length = 255)
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    @Basic
+//    @Column(name = "create_date", nullable = true)
     public LocalDateTime getCreateDate() {
         return createDate;
     }
@@ -56,7 +67,7 @@ public class Task {
     }
 
     @Basic
-    @Column(name = "status", nullable = true, length = 255)
+//    @Column(name = "status", nullable = true, length = 255)
     public String getStatus() {
         return status;
     }
@@ -66,7 +77,7 @@ public class Task {
     }
 
     @Basic
-    @Column(name = "task_date", nullable = false)
+//    @Column(name = "task_date", nullable = false)
     public LocalDate getTaskDate() {
         return taskDate;
     }
@@ -76,7 +87,7 @@ public class Task {
     }
 
     @Basic
-    @Column(name = "task_name", nullable = true, length = 255)
+//    @Column(name = "task_name", nullable = true, length = 255)
     public String getTaskName() {
         return taskName;
     }
@@ -86,7 +97,7 @@ public class Task {
     }
 
     @Basic
-    @Column(name = "user_id", nullable = true)
+//    @Column(name = "user_id", nullable = true)
     public Integer getUserId() {
         return userId;
     }
