@@ -17,16 +17,13 @@ public class Task {
 
     private String title;
     private String content;
-    private LocalDateTime createDate;
+    private Date createDate;
     private String status;
 
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
-    private LocalDate taskDate;
-
-    private String taskName;
+    private Date taskDate;
     private Integer userId;
 
-    @Id
+
 //    @Column(name = "id", nullable = false)
     public Integer getId() {
         return id;
@@ -58,11 +55,11 @@ public class Task {
 
     @Basic
 //    @Column(name = "create_date", nullable = true)
-    public LocalDateTime getCreateDate() {
+    public Date getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(LocalDateTime createDate) {
+    public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
 
@@ -78,23 +75,14 @@ public class Task {
 
     @Basic
 //    @Column(name = "task_date", nullable = false)
-    public LocalDate getTaskDate() {
+    public Date getTaskDate() {
         return taskDate;
     }
 
-    public void setTaskDate(LocalDate taskDate) {
+    public void setTaskDate(Date taskDate) {
         this.taskDate = taskDate;
     }
 
-    @Basic
-//    @Column(name = "task_name", nullable = true, length = 255)
-    public String getTaskName() {
-        return taskName;
-    }
-
-    public void setTaskName(String taskName) {
-        this.taskName = taskName;
-    }
 
     @Basic
 //    @Column(name = "user_id", nullable = true)
@@ -113,15 +101,15 @@ public class Task {
         Task task = (Task) o;
         return id == task.id &&
                 Objects.equals(content, task.content) &&
+                Objects.equals(title, task.title) &&
                 Objects.equals(createDate, task.createDate) &&
                 Objects.equals(status, task.status) &&
                 Objects.equals(taskDate, task.taskDate) &&
-                Objects.equals(taskName, task.taskName) &&
                 Objects.equals(userId, task.userId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, content, createDate, status, taskDate, taskName, userId);
+        return Objects.hash(id, title, content, createDate, status, taskDate, userId);
     }
 }

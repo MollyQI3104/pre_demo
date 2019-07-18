@@ -4,6 +4,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
+import java.sql.Date;
+import java.util.*;
+import java.sql.Timestamp;
 import java.util.List;
 
 
@@ -13,13 +16,14 @@ import java.util.List;
 
 public interface TaskRepository extends CrudRepository<Task, Integer> {
 
-    List<Task> findAllByUserId(Integer userId);
+    List<Task> findAllByUserIdOrderByCreateDateDesc(Integer userId);
 
-    List<Task> findAllByUserIdAndStatus(Integer userId,  String status);
+    List<Task> findAllByUserIdAndStatusOrderByCreateDateDesc(Integer userId,  String status);
 
-    List<Task> findAllByUserIdAndTitle(Integer userId, String title);
+    List<Task> findAllByUserIdAndTitleLikeOrderByCreateDateDesc(Integer userId, String title);
 
-    List<Task> findAllByUserIdAndContent(Integer userId, String content);
+    List<Task> findAllByUserIdAndContentLikeOrderByCreateDateDesc(Integer userId, String content);
+
 
 }
 

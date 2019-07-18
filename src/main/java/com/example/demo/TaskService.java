@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 public interface TaskService {
@@ -15,5 +17,8 @@ public interface TaskService {
     List<Task> findByStatus(Integer userId,  String status);
 
     List<Task> findByWord(Integer userId,  String word);
+
+    Task update(Task task);
+
 
 }

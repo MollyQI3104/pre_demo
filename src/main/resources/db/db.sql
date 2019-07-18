@@ -9,7 +9,6 @@ create table task
   create_date datetime     null,
   status      varchar(255) null,
   task_date   date         not null,
-  task_name   varchar(255) null,
   user_id     int          null
 );
 create table user
