@@ -12,11 +12,15 @@ public interface TaskService {
 
     List<Task> findByUserId(Integer userId);
 
+    List<Task> findByTitle(Integer userId,String title);
+
     Task findById(Integer id);
 
     List<Task> findByStatus(Integer userId,  String status);
 
     List<Task> findByWord(Integer userId,  String word);
+
+    List<Task> findByWordAndStatus(Integer userId, String status,String word);
 
     Task update(Task task);
 

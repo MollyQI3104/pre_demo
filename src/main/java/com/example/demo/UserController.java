@@ -27,49 +27,56 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
+	@GetMapping(path = "/index")
+	public String firstPage(@ModelAttribute("user") User user) {
+
+		return "login";
+	}
 
 
     //register
-	@GetMapping(path="/add") // Map ONLY GET Requests
-	public @ResponseBody String addNewUser (@RequestParam String name
-			, @RequestParam String password) {
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	public  String addNewUser (ModelMap map, @ModelAttribute("user") User user) {
 		// @ResponseBody means the returned String is the response, not a view name
 		// @RequestParam means it is a parameter from the GET or POST request
 
-		String MD5Password = MD5Util.getMD5(password);
+		User userEntity = userService.findByName(user.getName());
+		if (userEntity != null) {
+			map.addAttribute("result", "This user name has been used.");
+			return "login";
+		} else {
 
-		User n = new User();
-		n.setName(name);
-		n.setPassword(MD5Password);
-		userService.save(n);
+			String MD5Password = MD5Util.getMD5(user.getPassword());
+			user.setPassword(MD5Password);
 
-		return "Saved";
+			userService.save(user);
+			map.addAttribute("result", "You can login now!");
+			return "login";
+		}
+
 	}
 
 	// login
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public @ResponseBody String userLogin(ModelMap map, @RequestParam String name, @RequestParam String password,HttpServletRequest request) {
-		if (name.equals("") || password.equals("")) {
-			map.addAttribute("error", "please input");
-			return "login";
-		}
-		String MD5Password = MD5Util.getMD5(password);
-		User user = userService.findUserByNameAndPassword(name, MD5Password);
-		if (user == null) {
-			map.addAttribute("error", "wrong information");
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String userLogin(ModelMap map, @ModelAttribute("user") User user,HttpServletRequest request) {
+
+		String MD5Password = MD5Util.getMD5(user.getPassword());
+		User userEntity = userService.findUserByNameAndPassword(user.getName(), MD5Password);
+		if (userEntity == null) {
+			map.addAttribute("login_error", "Wrong name or password!");
 			return "login";
 		} else {
 
 			HttpSession session = request.getSession();
-			session.setAttribute("name",name);
-			return "success";
-//			return "redirect:/index";
+			session.setAttribute("name",user.getName());
+			return "redirect:/publish/list";
+
 		}
 	}
 
 
 	@GetMapping(path = "/logout")
-	public String logoutPage(ModelMap map, HttpServletRequest request) {
+	public String logoutPage(@ModelAttribute("user") User user,HttpServletRequest request) {
 
 		request.getSession().removeAttribute("name");
 //		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -77,8 +84,8 @@ public class UserController {
 //
 //			SecurityContextHolder.getContext().setAuthentication(null);
 //		}
-		map.addAttribute("logout", "safely");
-		return "/login";
+
+		return "login";
 	}
 
 

@@ -18,7 +18,11 @@ public interface TaskRepository extends CrudRepository<Task, Integer> {
 
     List<Task> findAllByUserIdOrderByCreateDateDesc(Integer userId);
 
+    List<Task> findAllByUserIdAndTitle(Integer userId,  String title);
+
     List<Task> findAllByUserIdAndStatusOrderByCreateDateDesc(Integer userId,  String status);
+
+    List<Task> findAllByUserIdAndStatusAndTitleLikeOrderByCreateDateDesc(Integer userId,  String status,String title);
 
     List<Task> findAllByUserIdAndTitleLikeOrderByCreateDateDesc(Integer userId, String title);
 

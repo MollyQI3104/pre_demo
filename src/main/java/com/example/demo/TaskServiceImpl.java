@@ -39,16 +39,35 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
+    public List<Task> findByTitle(Integer userId,  String title){
+        //       return (List<Task>)taskRepository.findAllByUserIdAndStatus(userId,status);
+        return taskRepository.findAllByUserIdAndTitle(userId,title);
+    }
+
+    @Override
     public List<Task> findByWord(Integer userId,  String word){
         //      return (List<Task>)taskRepository.findAllByUserIdAndTitle(userId,word);
 
         List<Task> list1 = taskRepository.findAllByUserIdAndTitleLikeOrderByCreateDateDesc(userId,"%"+word+"%");
-        List<Task> list2 = taskRepository.findAllByUserIdAndContentLikeOrderByCreateDateDesc(userId,"%"+word+"%");
+      //  List<Task> list2 = taskRepository.findAllByUserIdAndContentLikeOrderByCreateDateDesc(userId,"%"+word+"%");
 
-        list1.addAll(list2);
+      //  list1.addAll(list2);
 
         return list1;
 
+
+    }
+
+    @Override
+    public List<Task> findByWordAndStatus(Integer userId,  String status ,String word ){
+        //      return (List<Task>)taskRepository.findAllByUserIdAndTitle(userId,word);
+
+        List<Task> list1 = taskRepository.findAllByUserIdAndStatusAndTitleLikeOrderByCreateDateDesc(userId,status,"%"+word+"%");
+        //  List<Task> list2 = taskRepository.findAllByUserIdAndContentLikeOrderByCreateDateDesc(userId,"%"+word+"%");
+
+        //  list1.addAll(list2);
+
+        return list1;
 
     }
 
