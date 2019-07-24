@@ -7,20 +7,20 @@ Set up your database info (/src/main/resources/application.properties), change '
 It will create db tables by entities automatically. </br>
 After that,change this value back.
 ### Step2:
-Use './gradlew bootRun' command to start and 'ctrl+c' to stop.<.br>
+Use './gradlew bootRun' command to start and 'ctrl+c' to stop.</br>
 Start with http://localhost:port/user/index to register a new account.
 
 ## データベース
 resource/db.sql
 
 ## 動作確認が可能な URL(オプション)
-Firstly,register a new account, then login.<.br>
-Page will transferred to home page.<.br>
-Then you can manage your tasks(create,edit,update status,search with keyword and status).<.br>
+Firstly,register a new account, then login.</br>
+Page will transferred to home page.</br>
+Then you can manage your tasks(create,edit,update status,search with keyword and status).</br>
 
-Register:http://localhost:port/user/index<.br>
-Login:http://localhost:port/user/index<.br>
-Home page:http://localhost:port/publish/list<.br>
+Register:http://localhost:port/user/index</br>
+Login:http://localhost:port/user/index</br>
+Home page:http://localhost:port/publish/list</br>
 
 ## 出来ているところ
 Almost of requests on specification file.
