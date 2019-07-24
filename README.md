@@ -3,7 +3,7 @@
 ## How to Run 
 If use Idea to open this project, please check this [guide](https://spring.io/guides/gs/intellij-idea/).</br>
 ### Step1: 
-Set up your database info (/src/main/resources/application.properties), change 'spring.jpa.hibernate.ddl-auto=none'to 'spring.jpa.hibernate.ddl-auto=create'.</br>
+Set up your database info in "/src/main/resources/application.properties", change 'spring.jpa.hibernate.ddl-auto=none'to 'spring.jpa.hibernate.ddl-auto=create'.</br>
 It will create db tables by entities automatically. </br>
 After that,change this value back.
 ### Step2:
@@ -11,7 +11,7 @@ Use './gradlew bootRun' command to start and 'ctrl+c' to stop.</br>
 Start with http://localhost:port/user/index to register a new account.
 
 ## データベース
-resource/db.sql
+"resource/db.sql"
 
 ## 動作確認が可能な URL(オプション)
 Firstly,register a new account, then login.</br>
