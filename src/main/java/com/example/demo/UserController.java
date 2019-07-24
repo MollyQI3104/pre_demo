@@ -1,17 +1,12 @@
 package com.example.demo;
 
-import org.springframework.security.core.context.SecurityContextImpl;
-import org.springframework.security.core.userdetails.UserDetails;
+
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -79,20 +74,8 @@ public class UserController {
 	public String logoutPage(@ModelAttribute("user") User user,HttpServletRequest request) {
 
 		request.getSession().removeAttribute("name");
-//		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//		if (auth != null) {
-//
-//			SecurityContextHolder.getContext().setAuthentication(null);
-//		}
 
 		return "login";
-	}
-
-
-	@GetMapping(path="/all")
-	public @ResponseBody Iterable<User> getAllUsers() {
-		// This returns a JSON or XML with the users
-		return userService.findAll();
 	}
 
 	private User getCurrentUser(HttpServletRequest request) {
@@ -100,7 +83,6 @@ public class UserController {
 		String name = (String)request.getSession().getAttribute("name");
 		User userEntity = userService.findByName(name);
 		return userEntity;
-
 
 	}
 }

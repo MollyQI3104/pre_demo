@@ -1,6 +1,6 @@
 package com.example.demo;
 
-import java.sql.Timestamp;
+
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,19 +34,17 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public List<Task> findByStatus(Integer userId,  String status){
- //       return (List<Task>)taskRepository.findAllByUserIdAndStatus(userId,status);
+
         return taskRepository.findAllByUserIdAndStatusOrderByCreateDateDesc(userId,status);
     }
 
     @Override
     public List<Task> findByTitle(Integer userId,  String title){
-        //       return (List<Task>)taskRepository.findAllByUserIdAndStatus(userId,status);
         return taskRepository.findAllByUserIdAndTitle(userId,title);
     }
 
     @Override
     public List<Task> findByWord(Integer userId,  String word){
-        //      return (List<Task>)taskRepository.findAllByUserIdAndTitle(userId,word);
 
         List<Task> list1 = taskRepository.findAllByUserIdAndTitleLikeOrderByCreateDateDesc(userId,"%"+word+"%");
       //  List<Task> list2 = taskRepository.findAllByUserIdAndContentLikeOrderByCreateDateDesc(userId,"%"+word+"%");

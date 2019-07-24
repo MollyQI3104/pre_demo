@@ -2,23 +2,17 @@ package com.example.demo;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.security.core.Authentication;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
-import java.sql.Timestamp;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
+import static java.lang.Integer.valueOf;
 
 @Controller
 @RequestMapping(path = "/publish")
@@ -72,9 +66,6 @@ public class TaskController {
         task = taskService.findById(id);
         map.addAttribute("task", task);
 
-//        map.addAttribute("oldtitle",taskEntity.getTitle());
-//        map.addAttribute("deadline",taskEntity.getTaskDate());
-
         return "update";
 
     }
@@ -99,7 +90,7 @@ public class TaskController {
 
 
 
-    //task_list
+    //task_list（home page）
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String listPage(ModelMap map,HttpServletRequest request,@ModelAttribute("task") Task task,
                            @ModelAttribute("SearchTask") Task searchtask) {
@@ -107,19 +98,19 @@ public class TaskController {
         map.addAttribute("list", list);
 
         return "index";
-//        return "redirect:/publish/list";
+
     }
 
 
-    //select_status
-    @RequestMapping(value = "/select", method = RequestMethod.GET)
-    public String selectStatus(ModelMap map, @RequestParam String status,HttpServletRequest request) {
-        List<Task> list = taskService.findByStatus(getCurrentUser(request).getId(),status);
-        map.addAttribute("list", list);
-
-        return "select";
-//        return "list";
-    }
+//    //select_status
+//    @RequestMapping(value = "/select", method = RequestMethod.GET)
+//    public String selectStatus(ModelMap map, @RequestParam String status,HttpServletRequest request) {
+//        List<Task> list = taskService.findByStatus(getCurrentUser(request).getId(),status);
+//        map.addAttribute("list", list);
+//
+//        return "select";
+//
+//    }
 
     //select_keyword
     @RequestMapping(value = "/select_word", method = RequestMethod.GET)
@@ -167,27 +158,32 @@ public class TaskController {
 
 
 
-//change status
+    //change status
+    @RequestMapping(value = "/change_status", method = RequestMethod.POST)
+    public @ResponseBody String changeStatus(
+            @RequestParam String id,
 
-    //edit task
-    @RequestMapping(value = "/change_status", method = RequestMethod.GET)
-    public  String changeStatus(ModelMap map, @RequestParam Integer id,
                             @ModelAttribute("task") Task task,
                             @ModelAttribute("SearchTask") Task searchtask)  {
 
-
-        task = taskService.findById(id);
-        if(task.getStatus().equals("TODO"))
-            task.setStatus("DONE");
+        Integer task_id = null;
+        if(id!=null)
+           task_id = valueOf(id);
         else
-            task.setStatus("TODO");
+            return "null id";
 
-        taskService.update(task);
+        Task taskEntity = taskService.findById(task_id);
+        if(taskEntity.getStatus().equals("TODO"))
+            taskEntity.setStatus("DONE");
+        else
+            taskEntity.setStatus("TODO");
 
-        return "redirect:/publish/list";
+        taskService.update(taskEntity);
+
+        return "success";
+
 
     }
-
 
 
 
