@@ -7,6 +7,7 @@
 #### Mysql</br>
 #### Thymeleaf</br>
 #### Javascript(When confirming password and swithing task status)</br>
+#### Pure.css(https://purecss.io)
 
 ## 全体の設計・構成についての説明 
 #### Entity(User,Task)
