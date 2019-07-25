@@ -42,10 +42,9 @@ Start with http://localhost:port/user/index to register a new account.
 Firstly,register a new account, then login.</br>
 Page will transferred to home page.</br>
 Then you can manage your tasks(create,edit,update status,search with keyword and status).</br>
+Finally,logout.
 
-Register:http://localhost:port/user/index</br>
-Login:http://localhost:port/user/index</br>
-Home page:http://localhost:port/publish/list</br>
+Register/login:http://localhost:port/user/index</br>
 
 ## 出来ているところ
 Almost all of requests on specification file.
