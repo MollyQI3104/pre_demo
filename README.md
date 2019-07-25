@@ -65,6 +65,12 @@ But safari doesn't.
 
 ### 3.Only test on safari and chrome.
 
+## Some screenshots
+![register/login](https://github.com/MollyQI3104/pre_demo/blob/master/images/register:login.png)
+![homepage1](https://github.com/MollyQI3104/pre_demo/blob/master/images/homePage%20create%20a%20task%20.png)
+![homepage2](https://github.com/MollyQI3104/pre_demo/blob/master/images/homePage%20tasks.png)
+![edit](https://github.com/MollyQI3104/pre_demo/blob/master/images/edit%20a%20task.png)
+
 ## Reference(Tutorials)
 https://spring.io/guides/gs/accessing-data-rest/</br>
 https://spring.io/guides/gs/accessing-data-mysql/</br>
