@@ -3,7 +3,7 @@
 ## How to Run 
 If use Idea to open this project, please check this [guide](https://spring.io/guides/gs/intellij-idea/).</br>
 ### Step1: 
-Set up your database info in "/src/main/resources/application.properties", change 'spring.jpa.hibernate.ddl-auto=none'to 'spring.jpa.hibernate.ddl-auto=create'.</br>
+Set up your database info(database,username,password) in "/src/main/resources/application.properties", change 'spring.jpa.hibernate.ddl-auto=none'to 'spring.jpa.hibernate.ddl-auto=create'.</br>
 It will create db tables by entities automatically. </br>
 After that,change this value back.
 ### Step2:
@@ -23,13 +23,15 @@ Login:http://localhost:port/user/index</br>
 Home page:http://localhost:port/publish/list</br>
 
 ## 出来ているところ
-Almost of requests on specification file.
+Almost all of requests on specification file.
 
 ## 出来ていないところ
-1. error message</br>
-test
+1. Display every kind of error message on every kind of broswer.</br>
+There maybe some bugs.</br>
+For example,
+
 2. date
-3.broswer
+3.Didn't test this program on Edge、Firefox.</br>
 
 ## 使用した技術要素
 Spring boot
