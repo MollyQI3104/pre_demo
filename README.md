@@ -47,7 +47,7 @@ Finally,logout.
 
 Register/login:http://localhost:port/user/index</br>
 
-## 出来ているところ
+## 出来たところ
 Almost all of requests on specification file.
 
 ## 出来ていないところ
