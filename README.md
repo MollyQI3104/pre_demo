@@ -65,5 +65,9 @@ But safari doesn't.
 
 ### 3.Only test on safari and chrome.
 
+## Reference(Tutorials)
+https://spring.io/guides/gs/accessing-data-rest/</br>
+https://spring.io/guides/gs/accessing-data-mysql/</br>
+https://spring.io/guides/gs/accessing-data-jpa/</br>
 
 
