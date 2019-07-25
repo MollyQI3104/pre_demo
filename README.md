@@ -51,19 +51,19 @@ Home page:http://localhost:port/publish/list</br>
 Almost all of requests on specification file.
 
 ## 出来ていないところ
-### Display every kind of error message on every kind of broswer.
+### 1.Display every kind of error message on every kind of broswer.
 There maybe some bugs.</br>
 For example,setCustomValidity()can be show on safari like picture shows.</br>
 But chrome didn't show this message.(When i coding it did well,but now failed)</br>
 ![setCustomValidity](https://github.com/MollyQI3104/pre_demo/blob/master/images/safari%20setCustomValidity.png)
 
-### Display input type "date".
+### 2.Display input type "date".
 Chrome support datepicker of html5 as picture shows.</br>
 ![dateOnChrome](https://github.com/MollyQI3104/pre_demo/blob/master/images/chrome%20date.png)
 But safari doesn't.
 ![dateOnSafari](https://github.com/MollyQI3104/pre_demo/blob/master/images/safari%20date.png)
 
-### Only test on safari and chrome.
+### 3.Only test on safari and chrome.
 
 
 
