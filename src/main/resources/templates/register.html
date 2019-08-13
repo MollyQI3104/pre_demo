@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+    <meta charset="utf-8">
+    <title>Register Page</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css"
+
+          integrity="sha384-" crossorigin="anonymous">
+    
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-old-ie-min.css">
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-min.css">
+    <!--<![endif]-->
+
+
+        <!--[if lte IE 8]>
+            <link rel="stylesheet"
+                  th:href="@{../css/layouts/marketing-old-ie.css}">
+        <![endif]-->
+        <!--[if gt IE 8]><!-->
+            <link rel="stylesheet"
+                  th:href="@{../css/layouts/marketing.css}">
+        <!--<![endif]-->
+
+
+</head>
+<body>
+
+<div class="content">
+    <h2 class="content-head is-center">Create new account</h2><a method="GET" th:href="@{/user/index_login}">Already have an account?</a>
+
+
+<div class="pure-g">
+    <div class="l-box-lrg pure-u-1-2">
+        <form class="pure-form pure-form-stacked" method="POST" th:action="@{/user/add}" th:object="${user}" >
+            <fieldset>
+
+                <label >Your Name</label>
+                <input  type="text" placeholder="Your Name" th:field="*{name}" required>
+
+                <label >Enter Your Password</label>
+                <input id="pwd1" type="password" placeholder="Your Password" th:field="*{password}" required>
+
+                <label >Enter Your Password Again</label>
+                <input id="pwd2" type="password" placeholder="Confirm Your Password"  required>
+
+                <button type="submit" id="submit" class="pure-button" >Sign Up</button>
+                <strong id="alert" style="color:#df2d4f;" th:text="${result}">alert</strong>
+            </fieldset>
+        </form>
+    </div>
+
+
+</div>
+</div>
+
+
+<script th:src="@{../js/jquery/jquery-3.2.1.min.js}" ></script>
+<script type="text/javascript">
+
+var password = document.getElementById("pwd1")
+    , confirm_password = document.getElementById("pwd2");
+function validatePassword() {
+    if (password.value != confirm_password.value) {
+        confirm_password.setCustomValidity("Passwords Do not Match");
+        // document.getElementById("alert").innerHtml = 'Passwords Do not Match';
+    } else {
+        confirm_password.setCustomValidity('');
+    }
+}
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+
+</script>
+
+</body>
+</html>
+
+
+

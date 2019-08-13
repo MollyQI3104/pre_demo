@@ -25,11 +25,16 @@ public class UserController {
 	@GetMapping(path = "/index")
 	public String firstPage(@ModelAttribute("user") User user) {
 
+		return "register";
+	}
+
+	@GetMapping(path = "/index_login")
+	public String Page(@ModelAttribute("user") User user) {
+
 		return "login";
 	}
 
-
-    //register
+	//register
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public  String addNewUser (ModelMap map, @ModelAttribute("user") User user) {
 		// @ResponseBody means the returned String is the response, not a view name
@@ -38,14 +43,13 @@ public class UserController {
 		User userEntity = userService.findByName(user.getName());
 		if (userEntity != null) {
 			map.addAttribute("result", "This user name has been used.");
-			return "login";
+			return "register";
 		} else {
 
 			String MD5Password = MD5Util.getMD5(user.getPassword());
 			user.setPassword(MD5Password);
 
 			userService.save(user);
-			map.addAttribute("result", "You can login now!");
 			return "login";
 		}
 
