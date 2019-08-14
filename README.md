@@ -45,7 +45,7 @@ Page will transferred to home page.</br>
 Then you can manage your tasks(create,edit,update status,search with keyword and status).</br>
 Finally,logout.
 
-Register/login:http://localhost:port/user/index</br>
+Register:http://localhost:port/user/index</br>
 
 ## 出来たところ
 Almost all of requests on specification file.
